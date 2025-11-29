@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from models import Product, ProductCreate, User
+from models.product import Product, ProductCreate
+from models.user import User
 from sqlmodel import Session
 
 from db.session import get_session
