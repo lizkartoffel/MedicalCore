@@ -4,13 +4,13 @@ from models.user import User
 from sqlmodel import Session
 
 from db.session import get_session
-from core.dependencies import require_role
+from core.dependencies import require_single_role
 from core.security import get_current_user
 
 router = APIRouter(prefix="/products", tags=["products"])
 
 @router.post("/create")
-def create_product(data: ProductCreate, user: User = require_role("distributor"), session: Session = Depends(get_session)):
+def create_product(data: ProductCreate, user: User = require_single_role("distributor"), session: Session = Depends(get_session)):
     if user.role != "distributor":
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Only distributors can post products.")
 

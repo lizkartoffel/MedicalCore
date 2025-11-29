@@ -1,4 +1,4 @@
-from .base import BaseModel
+# from .base import BaseModel
 from .user import User, UserCreate, UserRead, UserUpdate, UserLogin, UserPasswordReset, UserProfile
 from .product import Product, ProductCreate, ProductRead, ProductUpdate
 # from .subscription import Subscription
