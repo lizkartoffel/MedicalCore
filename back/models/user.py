@@ -5,7 +5,7 @@ from enum import Enum
 
 # Placeholder for BaseModel (replace with actual base class if available)
 class BaseModel(SQLModel):
-    id: Optional[int] = Field(default=None, primary_key=True)
+    id: Optional[str] = Field(default=None, primary_key=True)
 
 
 class UserRole(str, Enum):
@@ -35,11 +35,11 @@ class UserCreate(SQLModel):
     email: str
     password: str  
     full_name: Optional[str] = None
-    role: UserRole # Used to populate the 'roles' list on creation
+    role: UserRole.CUSTOMER # Used to populate the 'roles' list on creation
 
 class UserRead(SQLModel):
     """Schema for reading basic user details."""
-    id: int
+    id: str
     username: str
     email: str
     full_name: Optional[str] = None
@@ -68,7 +68,7 @@ class UserPasswordReset(SQLModel):
 
 class UserProfile(SQLModel):
     """Schema for displaying a full user profile."""
-    id: int
+    id: str
     username: str
     email: str
     full_name: Optional[str] = None

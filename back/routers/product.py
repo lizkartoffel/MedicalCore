@@ -14,7 +14,7 @@ def create_product(data: ProductCreate, user: User = require_single_role("distri
     if user.role != "distributor":
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Only distributors can post products.")
 
-    product = Product(**data.dict(), owner_id=user.id)
+    product = Product(**data.model_dump(), owner_id=user.id)
     session.add(product)
     session.commit()
     session.refresh(product)
