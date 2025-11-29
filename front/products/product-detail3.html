@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checkme Blood Pressure Monitoring System - MedCore">
+    <title>Checkme Blood Pressure Monitor - MedCore</title>
+    
+    <link rel="stylesheet" href="/front/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .product-detail-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .product-image-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-details h1 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-details .price {
+            font-size: 2em;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-details .rating {
+            color: #ffc107;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .product-details ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .product-details ul li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .distributors-section,
+        .reviews-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            margin-top: 30px;
+        }
+
+        .distributors-section h3,
+        .reviews-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .distributor-card {
+            background-color: var(--background-light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--accent-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .review-item {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: var(--background-light);
+        }
+
+        .review-item h5 {
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .product-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/front/index.html">MedCore</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/front/index.html">Home</a></li>
+            <li><a href="/front/products/products.html">Products</a></li>
+            <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medical devices..." id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+            <div class="account-dropdown-container" onclick="toggleDropdown()">
+                <a href="#" class="account-dropdown-trigger">
+                    <i class="fas fa-user"></i> My Account 
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <div class="account-dropdown-menu" id="accountMenu">
+                    <a href="/front/pages/customer/customer.html">Customer</a>
+                    <a href="/front/pages/distributor/distributor.html">Distributor</a>
+                    <hr>
+                    <a href="/front/products/products.html">Continue as Guest</a>
+                </div>
+            </div>
+            <a href="/front/pages/cart/cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="product-detail-container">
+        <div class="product-info">
+            <div class="product-image-gallery">
+                <img src="./bloodpressure.jpg" alt="Checkme Blood Pressure Monitor">
+            </div>
+            <div class="product-details">
+                <h1>Checkme Blood Pressure Monitoring System</h1>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (4.1 | 15 reviews)
+                </div>
+                <p class="price">$55.54</p>
+                <p>Get Accurate and Effortless BP Readings: FSA/HSA eligible digital blood pressure monitor with high-end measurement accuracy. Featuring a large screen and voice broadcast function, you can easily read and hear your results. Say hello to a more convenient and user-friendly experience.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-color);"></i> FDA Approved</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-color);"></i> 1-Year Warranty</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-color);"></i> Easily track your progress with a clear display of your last 7 days' readings</li>
+                </ul>
+
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" value="1" min="1">
+                    </div>
+                    <button class="btn-primary">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <a href="/front/product instructions/instructions3.html" class="btn-inst">View Instructions</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="distributors-section">
+            <h3>Available Distributors</h3>
+            <div class="distributor-card">
+                <p><strong>MediSupply Co.</strong> - Located in New York, USA</p>
+                <button class="btn-secondary">Contact Distributor</button>
+            </div>
+            <div class="distributor-card">
+                <p><strong>Global Health Equip.</strong> - Located in Berlin, Germany</p>
+                <button class="btn-secondary">Contact Distributor</button>
+            </div>
+            <div class="distributor-card">
+                <p><strong>Asia Pacific Medical</strong> - Located in Singapore</p>
+                <button class="btn-secondary">Contact Distributor</button>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h3>Customer Reviews (15)</h3>
+            
+            <div class="review-form">
+                <h4>Write Your Review</h4>
+                <form>
+                    <div class="star-rating">
+                        <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        <span style="font-size: 0.7em; color: var(--secondary-color);"> (Click to Rate)</span>
+                    </div>
+                    <textarea placeholder="Share your experience with this product..."></textarea>
+                    <button type="submit" class="btn-primary">Submit Review</button>
+                </form>
+            </div>
+            
+            <div class="review-item">
+                <h5>Dr. S. Khan (Verified Buyer)</h5>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5/5
+                </div>
+                <p>Outstanding piece of equipment. Reliable, compact, and the battery life is excellent for patient transport. Highly recommend this model for any critical care unit.</p>
+                <small style="color: var(--secondary-color);">Reviewed on: Oct 10, 2023</small>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About MedCore</h3>
+            <p>MedCore is your trusted partner for high-quality medical devices, committed to supporting healthcare professionals globally.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/front/products/products.html">Browse Products</a></li>
+                <li><a href="/front/pages/customer/customer.html">My Account</a></li>
+                <li><a href="/front/pages/cart/cart.html">View Cart</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> Code&Tea@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +964 0770 743 1234</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MedCore. All rights reserved.
+    </div>
+</footer>
+
+<script src="/front/assets/js/main.js"></script>
+</body>
+</html>

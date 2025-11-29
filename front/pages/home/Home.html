@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - MedCore</title>
+    <link rel="stylesheet" href="/front/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/front/index.html">MC MedCore</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/front/index.html">Home</a></li>
+                <li><a href="/front/products/products.html">Products</a></li>
+                <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search medical devices...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-actions">
+                <a href="/front/pages/account/account.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="/front/pages/cart/cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="tab-button active" onclick="showTab('login')">Log In</button>
+                <button class="tab-button" onclick="showTab('signup')">Sign Up</button>
+            </div>
+
+            <form id="login-form" class="auth-form active">
+                <h2>Welcome Back</h2>
+                
+                <div class="role-selector">
+                    <p style="font-size: 0.9em; margin-bottom: 10px; color: var(--primary-color);">I am logging in as:</p>
+                    <label>
+                        <input type="radio" name="login_role" value="shopper" checked onchange="toggleDistributorFields('login', false)"> Shopper
+                    </label>
+                    <label>
+                        <input type="radio" name="login_role" value="distributor" onchange="toggleDistributorFields('login', true)"> Distributor
+                    </label>
+                </div>
+
+                <label for="login-email">Email Address</label>
+                <input type="email" id="login-email" required>
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required>
+                
+                <div id="login-distributor-fields" class="distributor-fields">
+                    <h4 style="margin-top: 0; color: var(--primary-color);">Distributor Verification</h4>
+                    <label for="login-subscription-id">Subscription ID</label>
+                    <input type="text" id="login-subscription-id" placeholder="Your MedCore Subscription ID">
+                    
+                    <label for="login-company-id">Company ID</label>
+                    <input type="text" id="login-company-id" placeholder="Registered Company ID">
+                </div>
+
+                <a href="#" class="forgot-password">Forgot Password?</a>
+
+                <button type="submit" class="btn-primary">Log In</button>
+            </form>
+
+            <form id="signup-form" class="auth-form">
+                <h2>Create Account</h2>
+
+                <div class="role-selector">
+                    <p style="font-size: 0.9em; margin-bottom: 10px; color: var(--primary-color);">I want to sign up as a:</p>
+                    <label>
+                        <input type="radio" name="signup_role" value="shopper" checked onchange="toggleDistributorFields('signup', false)"> Shopper
+                    </label>
+                    <label>
+                        <input type="radio" name="signup_role" value="distributor" onchange="toggleDistributorFields('signup', true)"> Distributor
+                    </label>
+                </div>
+
+                <label for="signup-name">Full Name / Company Representative</label>
+                <input type="text" id="signup-name" required>
+
+                <label for="signup-email">Email Address</label>
+                <input type="email" id="signup-email" required>
+
+                <div id="signup-distributor-fields" class="distributor-fields">
+                    <h4 style="margin-top: 0; color: var(--primary-color);">Distributor Requirements</h4>
+                    <p style="font-size: 0.85em; color: var(--secondary-color); margin-bottom: 15px;">A MedCore representative will verify your subscription ID and activate your account.</p>
+                    
+                    <label for="signup-subscription-id">Subscription ID</label>
+                    <input type="text" id="signup-subscription-id" placeholder="Enter provided Subscription ID">
+                    
+                    <label for="signup-company-id">Registered Company Name</label>
+                    <input type="text" id="signup-company-name" placeholder="E.g., Global Health Inc.">
+                </div>
+
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" required>
+
+                <label for="signup-confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" required>
+
+                <button type="submit" class="btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        </footer>
+
+    <script>
+        // Function to switch between Login and Signup tabs
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-button');
+            const forms = document.querySelectorAll('.auth-form');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            forms.forEach(form => form.classList.remove('active'));
+
+            document.querySelector(`.tab-button[onclick*='${tabName}']`).classList.add('active');
+            document.getElementById(`${tabName}-form`).classList.add('active');
+            
+            // Re-evaluate distributor fields visibility when changing tabs
+            const role = document.querySelector(`#${tabName}-form input[name='${tabName}_role']:checked`).value;
+            toggleDistributorFields(tabName, role === 'distributor');
+        }
+
+        // Function to show/hide distributor-specific fields
+        function toggleDistributorFields(formPrefix, isDistributor) {
+            const fieldsDiv = document.getElementById(`${formPrefix}-distributor-fields`);
+            const inputs = fieldsDiv.querySelectorAll('input');
+
+            if (isDistributor) {
+                fieldsDiv.classList.add('active');
+                // Note: Actual validation logic is handled server-side, but client-side "required" provides feedback
+                inputs.forEach(input => input.required = true);
+            } else {
+                fieldsDiv.classList.remove('active');
+                inputs.forEach(input => input.required = false);
+            }
+        }
+
+        // Initialize on load to ensure correct visibility
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check initial state for the login form
+            const loginRole = document.querySelector(`#login-form input[name='login_role']:checked`).value;
+            toggleDistributorFields('login', loginRole === 'distributor');
+
+            // Check initial state for the signup form
+            const signupRole = document.querySelector(`#signup-form input[name='signup_role']:checked`).value;
+            toggleDistributorFields('signup', signupRole === 'distributor');
+        });
+    </script>
+</body>
+</html>

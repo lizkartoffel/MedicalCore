@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MedCore - Your trusted partner for high-quality medical devices and equipment">
+    <title>MedCore - Quality Medical Devices</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">MedCore</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products/products.html">Products</a></li>
+            <li><a href="pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medical devices..." id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+            <a href="pages/account/account.html"><i class="fas fa-user"></i> Sign In</a>
+            <a href="pages/cart/cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Your one-stop online store for quality medical devices</h1>
+            <p>Trusted by healthcare professionals worldwide. Browse our extensive collection of certified medical equipment.</p>
+            <a href="pages/account/account.html" class="btn-primary">Start Browsing Products</a>
+        </div>
+    </section>
+
+    <!-- Featured Products Carousel -->
+    <section class="featured-products">
+        <h2>Featured Medical Devices</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" id="carouselPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Carousel items will be injected by JavaScript -->
+            </div>
+            <button class="carousel-btn next" id="carouselNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Info Boxes -->
+    <section class="info-boxes">
+        <div class="info-box">
+            <i class="fas fa-certificate"></i>
+            <h3>Certified Quality</h3>
+            <p>All products are FDA approved and meet international standards.</p>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-truck-fast"></i>
+            <h3>Fast Delivery</h3>
+            <p>Quick and secure shipping to healthcare facilities worldwide.</p>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-headset"></i>
+            <h3>Expert Support</h3>
+            <p>24/7 customer service from our medical equipment specialists.</p>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About MedCore</h3>
+            <p>MedCore is your trusted partner for high-quality medical devices, committed to supporting healthcare professionals globally.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="products/products.html">Browse Products</a></li>
+                <li><a href="pages/account/account.html">My Account</a></li>
+                <li><a href="pages/cart/cart.html">View Cart</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> Code&Tea@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +964 0770 743 1234</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MedCore. All rights reserved.
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - MedCore Distributor Dashboard</title>
+    <link rel="stylesheet" href="/front/assets/css/main.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/front/index.html">MedCore</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/front/index.html">Home</a></li>
+            <li><a href="/front/products/products.html">Products</a></li>
+            <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medical devices..." id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="user-actions">
+            <div class="account-dropdown-container" onclick="toggleDropdown()">
+                <a href="#" class="account-dropdown-trigger">
+                    <i class="fas fa-user"></i> My Account <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                
+                <div class="account-dropdown-menu" id="accountMenu">
+                    <a href="/front/pages/customer/customer.html">Customer</a>
+                    <a href="/front/pages/customer/distributor.html">Distributor</a>
+                    <hr>
+                    <a href="/front/products/products.html">Continue as Guest</a>
+                </div>
+            </div>
+            
+            <a href="/front/pages/cart/cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> Cart </a>
+        </div>
+    </nav>
+</header>
+
+<main class="dashboard-container">
+    <aside class="sidebar">
+        <h4><i class="fas fa-user-circle"></i> Distributor Menu</h4>
+        <ul>
+            <li class="nav-link-item"><a href="#" onclick="showSection('profile-section'); return false;"><i class="fas fa-user-cog"></i> Profile & Address</a></li>
+            <li class="nav-link-item active"><a href="#" onclick="showSection('dashboard-overview'); return false;"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li class="nav-link-item"><a href="#" onclick="showSection('security-section'); return false;"><i class="fas fa-shield-alt"></i> Security Settings</a></li>
+            <li class="nav-link-item" style="margin-top: 20px;"><a href="/front/pages/auth/logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        </ul>
+    </aside>
+
+    <section class="dashboard-content">
+        
+        <div class="welcome-header">
+            <h2>Welcome, Ammar</h2>
+            <button class="btn-primary" onclick="showSection('profile-section');">
+                <i class="fas fa-pencil-alt"></i> Edit Profile
+            </button>
+        </div>
+
+        <div id="dashboard-overview" class="dashboard-section active-section">
+            <h3 style="color: var(--primary-color);"><i class="fas fa-chart-bar"></i> Distributor Dashboard Access</h3>
+            
+            <div class="dashboard-placeholder">
+                <h4>Access Your Full Distributor Analytics and Tools</h4> <br>
+                <a href="/front/pages/dashboard/dashboard.html" class="btn-primary" style="padding: 15px 40px; font-size: 1.1em;">
+                    <i class="fas fa-desktop" style="margin-right: 10px;"></i> View Full Dashboard
+                </a>
+                <p style="margin-top: 20px; color: var(--secondary-color); font-size: 0.9em;"></p>
+            </div>
+        </div>
+
+        <div id="profile-section" class="dashboard-section" style="display: none;">
+            <h3><i class="fas fa-map-marker-alt"></i> Profile & Business Information</h3>
+            
+            <div class="info-group">
+                <strong>Business Name:</strong>
+                <span>Global Medical Solutions Corp.</span>
+            </div>
+            <div class="info-group">
+                <strong>Representative Name:</strong>
+                <span>Ammar</span>
+            </div>
+            <div class="info-group">
+                <strong>Email:</strong>
+                <span>ammar@globalsolutions.com</span>
+            </div>
+            <div class="info-group">
+                <strong>Phone:</strong>
+                <span>+964 780 123 4567</span>
+            </div>
+            <div class="info-group">
+                <strong>Primary Address:</strong>
+                <span>123 Global Logistics Center, Unit 10, State, 90210</span>
+            </div>
+            <div class="info-group">
+                <strong>MedCore ID:</strong>
+                <span style="font-weight: 600; color: #007bff;">MC-DIST-7890</span>
+            </div>
+            <div class="info-group">
+                <strong>Account Type:</strong>
+                <span style="font-weight: 600; color: #28a745;"><i class="fas fa-check-circle"></i> Verified Distributor</span>
+            </div>
+            <button class="btn-secondary" style="margin-top: 20px;">Save Changes</button>
+        </div>
+        
+        <div id="security-section" class="dashboard-section" style="display: none;">
+            <h3><i class="fas fa-shield-alt"></i> Security Settings</h3>
+            <p>Manage your password and two-factor authentication.</p>
+
+            <div class="card-action-group">
+                <h4>Change Password</h4>
+                <p>Update your current account password.</p>
+                <a href="/front/pages/security/password-change.html" class="btn-primary">Update Password</a>
+            </div>
+            
+            <div class="card-action-group" style="margin-top: 15px;"> 
+                <h4>Two-Factor Authentication (2FA)</h4>
+                <p>Status: <span style="font-weight: 600; color: #dc3545;"><i class="fas fa-times-circle"></i> Disabled</span></p>
+                <a href="/front/pages/security/2fa-setup.html" class="btn-secondary">Enable 2FA</a>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About MedCore</h3>
+            <p>MedCore is your trusted partner for high-quality medical devices, committed to supporting healthcare professionals globally.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/front/products/products.html">Browse Products</a></li>
+                <li><a href="/front/pages/customer/customer.html">My Account</a></li>
+                <li><a href="/front/pages/cart/cart.html">View Cart</a></li>
+                <li><a href="/front/pages/privacy/privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> Code&Tea@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +964 0770 743 1234</p>
+            <form action="/front/pages/contact/contact.html" method="POST">
+                <textarea name="complaint" placeholder="Have a complaint or suggestion?"></textarea>
+                <button type="submit" class="btn-secondary">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MedCore. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    // CONSOLIDATED JAVASCRIPT FOR DASHBOARD FUNCTIONALITY AND DROPDOWN
+
+    // Function to handle section switching in the dashboard
+    function showSection(sectionId) {
+        // Remove 'active' state from all nav links
+        document.querySelectorAll('.nav-link-item').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Hide all dashboard sections
+        document.querySelectorAll('.dashboard-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the target section and set its link as active
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+            // Find the parent list item and set it active
+            const targetLink = document.querySelector(`.sidebar a[onclick*='${sectionId}']`);
+            if (targetLink) {
+                targetLink.closest('.nav-link-item').classList.add('active');
+            }
+        }
+    }
+
+    // Function to toggle the account dropdown menu visibility
+    function toggleDropdown() {
+        const menu = document.getElementById('accountMenu');
+        const arrow = document.querySelector('.dropdown-arrow');
+        
+        menu.classList.toggle('show');
+        
+        // Rotate the arrow icon
+        if (menu.classList.contains('show')) {
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            arrow.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.account-dropdown-trigger') && !event.target.closest('.account-dropdown-container')) {
+            const dropdown = document.getElementById("accountMenu");
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            if (dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    }
+    
+    // Ensure the Dashboard Overview is shown on load
+    document.addEventListener('DOMContentLoaded', () => {
+        showSection('dashboard-overview');
+    });
+</script>
+</body>
+</html>

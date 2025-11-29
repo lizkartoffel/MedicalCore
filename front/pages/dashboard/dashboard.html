@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Distributors Dashboard - MedCore</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <style>
+        body {
+            background-color: var(--background-light);
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dashboard-header i {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .dashboard-header h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .chart-container {
+            background-color: var(--card-background);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            height: 450px;
+        }
+
+        .chart-container h3 {
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-dark);
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="dashboard-header">
+        <i class='bx bxs-dashboard'></i>
+        <h1>Medical Distributors Dashboard</h1>
+    </header>
+
+    <!-- KPI Cards -->
+    <section class="kpi-grid">
+        <div class="card">
+            <div class="card-header">
+                <i class='bx bx-dollar-circle'></i>
+                <h3>Total Revenue</h3>
+            </div>
+            <p class="card-value">IQD 631,075,000</p>
+            <p class="card-comparison">+15.2% from last month</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <h3>Avg. Order Value</h3>
+            </div>
+            <p class="card-value">IQD 507,439</p>
+            <p class="card-comparison">+20% from last month</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <i class='bx bx-cart'></i>
+                <h3>Total Orders</h3>
+            </div>
+            <p class="card-value">1,245</p>
+            <p class="card-comparison">Stable 0%</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <i class='bx bx-globe'></i>
+                <h3>Online Share</h3>
+            </div>
+            <p class="card-value">80%</p>
+            <p class="card-comparison">+1.5% from last month</p>
+        </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-grid">
+        <div class="chart-container">
+            <h3>Revenue Trends (Daily Revenue with Online Contribution)</h3>
+            <canvas id="revenueTrendsChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Refund Analysis (Daily Refunds vs Orders)</h3>
+            <canvas id="refundAnalysisChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Payment Methods (Revenue Breakdown by Iraqi Methods)</h3>
+            <canvas id="paymentMethodsChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Hourly Orders (Orders across a typical day)</h3>
+            <canvas id="hourlyOrdersChart"></canvas>
+        </div>
+    </section>
+    
+    <!-- Total Customers -->
+    <section class="kpi-grid" style="margin-top: 20px;">
+        <div class="card" style="grid-column: span 4; display: flex; align-items: center; justify-content: space-between;">
+            <div class="card-header" style="margin: 0;">
+                <i class='bx bx-group'></i>
+                <h3>Total Customers</h3>
+            </div>
+            <p class="card-value">5,800</p>
+        </div>
+    </section>
+
+    <!-- Back to Dashboard Button -->
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="/pages/distributor/distributor.html" class="btn-secondary" style="padding: 12px 24px;">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Common chart options
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: { 
+            padding: { top: 5, bottom: 40, left: 25, right: 10 } 
+        },
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    color: '#343a40',
+                    font: { family: 'Montserrat', size: 14, weight: '600' },
+                    boxWidth: 18,
+                    boxHeight: 10
+                }
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                titleFont: { size: 13, weight: 'bold', family: 'Montserrat' },
+                bodyFont: { size: 12, family: 'Montserrat' },
+                padding: 10,
+                cornerRadius: 8
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: '#343a40',
+                    font: { family: 'Montserrat', size: 13, weight: '600' },
+                    padding: 5
+                },
+                grid: { display: false }
+            },
+            x: {
+                ticks: {
+                    color: '#343a40',
+                    font: { family: 'Montserrat', size: 14, weight: '700' },
+                    padding: 10
+                },
+                grid: { display: false }
+            }
+        }
+    };
+
+    // Revenue Trends Chart
+    const revenueCtx = document.getElementById('revenueTrendsChart').getContext('2d');
+    const gradient = revenueCtx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(0, 86, 179, 0.3)');
+    gradient.addColorStop(1, 'rgba(0, 86, 179, 0)');
+
+    new Chart(revenueCtx, {
+        type: 'line',
+        data: {
+            labels: ['Oct 1', 'Oct 2', 'Oct 3', 'Oct 4', 'Oct 5', 'Oct 6', 'Oct 7'],
+            datasets: [
+                {
+                    label: 'Daily Revenue (IQD)',
+                    data: [18602000, 20239500, 20946200, 18078000, 20914500, 19372500, 22401000],
+                    borderColor: '#0056b3',
+                    backgroundColor: gradient,
+                    borderWidth: 2.5,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#0056b3',
+                    tension: 0.35,
+                    fill: true
+                },
+                {
+                    label: 'Online Contribution (IQD)',
+                    data: [7336000, 8253000, 8777000, 6681000, 8777000, 7598000, 9301000],
+                    borderColor: '#28a745',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#28a745',
+                    tension: 0.35
+                }
+            ]
+        },
+        options: chartOptions
+    });
+
+    // Refund Analysis Chart
+    const refundCtx = document.getElementById('refundAnalysisChart').getContext('2d');
+    new Chart(refundCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            datasets: [
+                {
+                    label: 'Total Orders',
+                    data: [150, 180, 140, 120, 170, 200, 160],
+                    backgroundColor: 'rgba(0, 86, 179, 0.8)',
+                    borderRadius: 6
+                },
+                {
+                    label: 'Daily Refunds',
+                    data: [4, 6, 3, 5, 4, 7, 5],
+                    backgroundColor: 'rgba(220, 53, 69, 0.8)',
+                    borderRadius: 6
+                }
+            ]
+        },
+        options: chartOptions
+    });
+
+    // Payment Methods Chart
+    const paymentCtx = document.getElementById('paymentMethodsChart').getContext('2d');
+    new Chart(paymentCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Zain Cash', 'Asia Hawala', 'Cash on Delivery (COD)', 'Bank Card / Other'],
+            datasets: [{
+                data: [40, 30, 15, 15],
+                backgroundColor: ['#0056b3', '#28a745', '#dc3545', '#ffc107'],
+                borderWidth: 3
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            cutout: '73%',
+            layout: { padding: { top: 0, bottom: 60 } },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#343a40',
+                        font: { family: 'Montserrat', size: 13, weight: '600' },
+                        padding: 18,
+                        boxWidth: 18
+                    }
+                }
+            }
+        }
+    });
+
+    // Hourly Orders Chart
+    const hourlyCtx = document.getElementById('hourlyOrdersChart').getContext('2d');
+    new Chart(hourlyCtx, {
+        type: 'bar',
+        data: {
+            labels: ['8-10 AM', '10-12 PM', '12-2 PM', '2-4 PM', '4-6 PM', '6-8 PM'],
+            datasets: [{
+                label: 'Orders Count',
+                data: [40, 65, 90, 85, 55, 35],
+                backgroundColor: 'rgba(40, 167, 69, 0.8)',
+                borderRadius: 6
+            }]
+        },
+        options: chartOptions
+    });
+});
+</script>
+</body>
+</html>

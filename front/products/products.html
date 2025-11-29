@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our complete catalog of medical devices and equipment">
+    <title>Products - MedCore</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/front/assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/front/index.html">MedCore</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/front/index.html">Home</a></li>
+            <li><a href="/front/products/products.html">Products</a></li>
+            <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medical devices..." id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+            <div class="account-dropdown-container" onclick="toggleDropdown()">
+                <a href="#" class="account-dropdown-trigger">
+                    <i class="fas fa-user"></i> My Account 
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <div class="account-dropdown-menu" id="accountMenu">
+                    <a href="/front/pages/customer/customer.html">Customer</a>
+                    <a href="/front/pages/customer/distributor.html">Distributor</a>
+                    <hr>
+                    <a href="front//products/products.html">Continue as Guest</a>
+                </div>
+            </div>
+            <a href="/front/pages/cart/cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+    <section class="featured-products" style="padding-top: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <h2 style="margin-bottom: 0;">All Medical Devices</h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label for="sort-select" style="font-weight: 500;">Sort By:</label>
+                <select id="sort-select" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 5px;">
+                    <option>Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Top Rated</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <a href="/front/products/product-detail.html" class="product-card">
+                <img src="/assets/images/products/contour.glucometer.jpg" alt="Blood Glucose Monitor">
+                <h3>CONTOUR®NEXT EZ Blood Glucose Monitoring System</h3>
+                <p class="price">$17.99</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i> (4.4)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+            
+            <a href="/front/products/product-detail2.html" class="product-card">
+                <img src="/front/assets/images/products/thermometer.jpg" alt="Infrared Thermometer">
+                <h3>Digital Thermometer Gun, Touchless Infrared Forehead Thermometer</h3>
+                <p class="price">$49.55</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (5.0)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+            
+            <a href="/front/products/product-detail3.html" class="product-card">
+                <img src="/front/assets/images/products/bloodpressure.jpg" alt="Blood Pressure Monitor">
+                <h3>Checkme Blood Pressure Monitoring System</h3>
+                <p class="price">$55.54</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (3.0)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+            
+            <a href="/front/products/product-detail4.html" class="product-card">
+                <img src="/front/assets/images/products/oxygen.cylinder.jpg" alt="Oxygen Cylinder">
+                <h3>Oxygen Welding Gas Cylinder Tank CGA 540</h3>
+                <p class="price">$210</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> (4.8)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+
+            <a href="#" class="product-card">
+                <img src="/front/assets/images/products/mask.webp" alt="N95 Masks">
+                <h3>Box of 50 N95 Respirator Masks</h3>
+                <p class="price">$15</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (5.0)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+            
+            <a href="#" class="product-card">
+                <img src="/front/assets/images/products/ultrasound.png" alt="Portable Ultrasound">
+                <h3>Compact Portable Ultrasound</h3>
+                <p class="price">$450</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (4.1)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+
+            <a href="#" class="product-card">
+                <img src="/front/assets/images/products/Syringe-Pump.avif" alt="Syringe Pump">
+                <h3>High Precision Syringe Pump</h3>
+                <p class="price">$550.00</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (3.2)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+
+            <a href="#" class="product-card">
+                <img src="/front/assets/images/products/first.aid.jpg" alt="First Aid Kit">
+                <h3>Professional First Aid Kit</h3>
+                <p class="price">$55.99</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (4.5)
+                </div>
+                <button class="btn-secondary">View Details</button>
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About MedCore</h3>
+            <p>MedCore is your trusted partner for high-quality medical devices, committed to supporting healthcare professionals globally.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/front/products/products.html">Browse Products</a></li>
+                <li><a href="/front/pages/account/account.html">My Account</a></li>
+                <li><a href="/front/pages/cart/cart.html">View Cart</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> Code&Tea@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +964 0770 743 1234</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MedCore. All rights reserved.
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="/front/assets/js/main.js"></script>
+</body>
+</html>

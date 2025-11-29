@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - MedCore</title>
+    <link rel="stylesheet" href="/front/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/front/index.html">MedCore</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/front/index.html">Home</a></li>
+                <li><a href="/front/products/products.html">Products</a></li>
+                <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+            </ul>
+
+            <div class="user-actions">
+
+                <a href="/front/pages/cart/cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> Cart </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+        <h1>Secure Checkout</h1>
+        <div class="checkout-layout">
+            <div class="checkout-form-section">
+                <form>
+                    <div class="form-group">
+                        <h3><i class="fas fa-location-dot"></i> Shipping Information</h3>
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" required>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" required>
+                            </div>
+                        </div>
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" required>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP/Postal Code</label>
+                                <input type="text" id="zip" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="credit-card" checked>
+                                <i class="fas fa-credit-card"></i>
+                                <span class="option-content">Credit/Debit Card</span>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="paypal">
+                                <i class="fab fa-paypal"></i>
+                                <span class="option-content">PayPal</span>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="wire-transfer">
+                                <i class="fas fa-money-check-dollar"></i>
+                                <span class="option-content">Wire Transfer (B2B)</span>
+                            </label>
+                        </div>
+                        
+                        <div class="card-details">
+                            <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" required>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry (MM/YY)</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvc">CVC</label>
+                                    <input type="text" id="cvc" placeholder="XXX" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-name">Name on Card</label>
+                                <input type="text" id="card-name" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-place-order">
+                        <i class="fas fa-lock"></i> Place Order & Pay $15,900.00
+                    </button>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+                <div class="summary-item">
+                    <span>Portable Critical Care Ventilator (x1)</span>
+                    <span>$15,500.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping Fee (Express)</span>
+                    <span>$100.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Tax (7%)</span>
+                    <span>$300.00</span>
+                </div>
+                <div class="summary-item summary-total">
+                    <span>Order Total</span>
+                    <span>$15,900.00</span>
+                </div>
+                <small style="display: block; text-align: center; margin-top: 15px; color: var(--secondary-color);">All prices are final and include VAT.</small>
+            </div>
+        </div>
+    </main>
+        <footer>
+        </footer>
+</body>
+</html>

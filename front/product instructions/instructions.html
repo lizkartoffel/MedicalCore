@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTOUR®NEXT EZ Instructions - MedCore</title>
+    <link rel="stylesheet" href="/front/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .instructions-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .instructions-container h1 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+        }
+
+        .product-header {
+            margin-bottom: 40px;
+        }
+
+        .product-header img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            display: block;
+        }
+
+        .instruction-list {
+            margin-top: 30px;
+        }
+
+        .instruction-step {
+            background-color: var(--background-light);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .instruction-step h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .instruction-step ol {
+            list-style-position: inside;
+            margin-left: 0;
+        }
+
+        .instruction-step li {
+            margin: 12px 0;
+            line-height: 1.8;
+            padding-left: 10px;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .note i {
+            color: #ffc107;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/front/index.html">MedCore</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/front/index.html">Home</a></li>
+            <li><a href="/front/products/products.html">Products</a></li>
+            <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medical devices..." id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+            <div class="account-dropdown-container">
+                <a href="#" class="account-dropdown-trigger">
+                    <i class="fas fa-user"></i> My Account 
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <div class="account-dropdown-menu" id="accountMenu">
+                    <a href="/front/pages/customer/customer.html">Customer</a>
+                    <a href="/front/pages/distributor/distributor.html">Distributor</a>
+                    <hr>
+                    <a href="/front/products/products.html">Continue as Guest</a>
+                </div>
+            </div>
+            <a href="/front/pages/cart/cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="instructions-container">
+        <h1>CONTOUR®NEXT EZ Blood Glucose Monitoring System</h1>
+        
+        <div class="product-header">
+            <img src="/front/product instructions/glucometer.steps.jpg" alt="Glucometer Usage Steps">
+            <p style="color: var(--secondary-color); font-style: italic; text-align: center;">Reference the diagram above for proper usage before starting.</p>
+        </div>
+
+        <div class="instruction-list">
+            <div class="instruction-step">
+                <h3><i class="fas fa-power-off"></i> Section 1: Setup and Power</h3>
+                <ol>
+                    <li><strong>Check Power:</strong> Ensure the device has fresh batteries installed. The meter uses two standard AAA batteries.</li>
+                    <li><strong>Prepare Device:</strong> Turn on the meter by inserting a test strip. The device will automatically power on and display a drop symbol indicating it's ready for testing.</li>
+                    <li><strong>Wait for Ready Signal:</strong> The meter will perform a self-check and display the test strip symbol when ready to accept a blood sample.</li>
+                </ol>
+            </div>
+
+            <div class="instruction-step">
+                <h3><i class="fas fa-hand-sparkles"></i> Section 2: Patient Preparation</h3>
+                <ol>
+                    <li><strong>Wash Hands:</strong> Clean hands thoroughly with warm water and soap. Dry completely to ensure accurate readings.</li>
+                    <li><strong>Prepare Lancing Device:</strong> Load the lancing device with a sterile lancet and adjust the depth setting based on skin type.</li>
+                    <li><strong>Select Test Site:</strong> Choose a fingertip (sides work best) or alternate site as approved by your healthcare provider.</li>
+                    <li><strong>Insert Test Strip:</strong> Insert the test strip into the meter with the contact bars facing you. The meter will turn on automatically.</li>
+                </ol>
+            </div>
+
+            <div class="instruction-step">
+                <h3><i class="fas fa-vial"></i> Section 3: Taking the Measurement</h3>
+                <ol>
+                    <li><strong>Obtain Blood Sample:</strong> Use the lancing device to prick the side of your fingertip. Gently squeeze to form a small drop of blood.</li>
+                    <li><strong>Apply Blood to Strip:</strong> Touch and hold the tip of the test strip to the blood drop. The meter will beep when enough blood is applied.</li>
+                    <li><strong>Second-Chance Sampling:</strong> If needed within 60 seconds, you can apply more blood to the same test strip if the first sample was insufficient.</li>
+                    <li><strong>Wait for Result:</strong> The meter will count down (usually 5 seconds) and then display your blood glucose result.</li>
+                    <li><strong>Record Result:</strong> The meter automatically stores results with date and time. Write down the result in your logbook if required.</li>
+                </ol>
+            </div>
+
+            <div class="instruction-step">
+                <h3><i class="fas fa-broom"></i> Section 4: Cleanup and Storage</h3>
+                <ol>
+                    <li><strong>Dispose of Materials:</strong> Safely dispose of the used test strip and lancet in a sharps container.</li>
+                    <li><strong>Clean Meter:</strong> Wipe the meter with a slightly damp cloth if needed. Never use alcohol or cleaning solutions on the meter.</li>
+                    <li><strong>Store Properly:</strong> Keep the meter and test strips in a cool, dry place away from direct sunlight and extreme temperatures.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="note">
+            <i class="fas fa-exclamation-triangle"></i> <strong>Safety Note:</strong> This device is for self-monitoring of blood glucose. Always consult with your healthcare provider about your results and treatment plan. If you experience symptoms of low or high blood sugar, test immediately and follow your healthcare provider's instructions. Keep test strips in their original container and check expiration dates regularly.
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About MedCore</h3>
+            <p>MedCore is your trusted partner for high-quality medical devices, committed to supporting healthcare professionals globally.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/front/products/products.html">Browse Products</a></li>
+                <li><a href="/front/pages/account/account.html">My Account</a></li>
+                <li><a href="/front/pages/cart/cart.html">View Cart</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> Code&Tea@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +964 0770 743 1234</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MedCore. All rights reserved.
+    </div>
+</footer>
+
+<script src="/front/assets/js/main.js"></script>
+</body>
+</html>

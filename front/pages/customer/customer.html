@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - MedCore Dashboard</title>
+    <link rel="stylesheet" href="/front/assets/css/main.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/front/index.html">MedCore</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/front/pages/home/Home.html">Home</a></li>
+            <li><a href="/front/products/products.html">Products</a></li>
+            <li><a href="/front/pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medical devices...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="user-actions">
+            <div class="account-dropdown-container" onclick="toggleDropdown()">
+                <a href="#" class="account-dropdown-trigger">
+                    <i class="fas fa-user"></i> My Account <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                
+                <div class="account-dropdown-menu" id="accountMenu">
+                    <a href="./customer.html">Customer</a>
+                    <a href="./distributor.html">Distributor</a>
+                    <hr>
+                    <a href="/front/products.html">Continue as Guest</a>
+                </div>
+            </div>
+            
+            <a href="/front/pages/cart/cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> Cart </a>
+        </div>
+    </nav>
+</header>
+
+    <main class="dashboard-container">
+        <aside class="sidebar">
+            <h4><i class="fas fa-user-circle"></i> Account Menu</h4>
+            <ul>
+                <li class="nav-link-item active"><a href="#profile-section"><i class="fas fa-user-cog"></i> Profile & Address</a></li>
+                <li class="nav-link-item"><a href="#favorites-section"><i class="fas fa-heart"></i> My Favorites</a></li>
+                <li class="nav-link-item"><a href="#orders-section"><i class="fas fa-box-open"></i> Order History</a></li>
+                <li class="nav-link-item"><a href="#security-section"><i class="fas fa-shield-alt"></i> Security Settings</a></li>
+                <li class="nav-link-item" style="margin-top: 20px;"><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+            </ul>
+        </aside>
+
+        <section class="dashboard-content">
+            
+            <div class="welcome-header">
+                <h2>Hello</h2>
+                <button class="btn-primary">
+                    <i class="fas fa-pencil-alt"></i> Edit Profile
+                </button>
+            </div>
+
+            <div id="profile-section" class="profile-info">
+                <h3><i class="fas fa-map-marker-alt"></i> Delivery Information</h3>
+                
+                <div class="info-group">
+                    <strong>Full Name:</strong>
+                    <span>Rawan Amel</span>
+                </div>
+                <div class="info-group">
+                    <strong>Email:</strong>
+                    <span>r1234@gmail.com</span>
+                </div>
+                <div class="info-group">
+                    <strong>Phone:</strong>
+                    <span>+964 770 123 4567</span>
+                </div>
+                <div class="info-group">
+                    <strong>Primary Address:</strong>
+                    <span>Baghdad, Iraq</span>
+                </div>
+                <div class="info-group">
+                    <strong>Account Type:</strong>
+                    <span style="font-weight: 600; color: var(--primary-color);"> Customer</span>
+                </div>
+            </div>
+            
+            <hr style="margin: 40px 0; border-color: var(--border-color);">
+
+            <div id="favorites-section">
+                <h3><i class="fas fa-heart"></i> My Favorite Products</h3>
+                <p style="color: var(--secondary-color);">Easily access the devices and supplies you frequently purchase.</p>
+
+                <div class="favorites-list">
+                    
+                    <div class="favorite-card">
+                        <button class="remove-favorite" title="Remove from Favorites"><i class="fas fa-times-circle"></i></button>
+      
+                        <h4>ECG Replacement Lead Sets</h4>
+                        <p style="font-size: 1.1em; color: var(--accent-color); font-weight: 600;">$35.00</p>
+                        <a href="#" class="btn-secondary" style="padding: 8px 15px;">View Product</a>
+                    </div>
+                    
+                    <div class="favorite-card">
+                        <button class="remove-favorite" title="Remove from Favorites"><i class="fas fa-times-circle"></i></button>
+                        <h4>Digital Clinical BP Monitor</h4>
+                        <p style="font-size: 1.1em; color: var(--accent-color); font-weight: 600;">$149.99</p>
+                        <a href="#" class="btn-secondary" style="padding: 8px 15px;">View Product</a>
+                    </div>
+                    
+                    <div class="favorite-card">
+                        <button class="remove-favorite" title="Remove from Favorites"><i class="fas fa-times-circle"></i></button>
+                        <img src="https://via.placeholder.com/200x120?text=Disposable+Masks" alt="Disposable Masks">
+                        <h4>Surgical Face Masks (Case)</h4>
+                        <p style="font-size: 1.1em; color: var(--accent-color); font-weight: 600;">$75.00</p>
+                        <a href="#" class="btn-secondary" style="padding: 8px 15px;">View Product</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="orders-section" style="margin-top: 40px; display: none;">
+                </div>
+             <div id="security-section" style="margin-top: 40px; display: none;">
+                </div>
+
+        </section>
+    </main>
+    <script>
+    // Function to toggle the dropdown menu visibility
+    function toggleDropdown() {
+        const menu = document.getElementById('accountMenu');
+        const arrow = document.querySelector('.dropdown-arrow');
+        
+        menu.classList.toggle('show');
+        
+        // Rotate the arrow icon
+        if (menu.classList.contains('show')) {
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            arrow.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.account-dropdown-trigger') && !event.target.closest('.account-dropdown-container')) {
+            const dropdown = document.getElementById("accountMenu");
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    }
+    
+    // Add other existing scripts (like updateCount, etc.) here...
+</script>
+
+    </body>
+</html>
