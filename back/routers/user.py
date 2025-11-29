@@ -27,7 +27,7 @@ async def update_user(
     if not user_to_update:
         raise HTTPException(status_code=404, detail="User not found")
 
-    update_data = user_data.dict(exclude_unset=True)  # FIX for SQLModel/Pydantic v1
+    update_data = user_data.model_dump(exclude_unset=True)  # FIX for SQLModel/Pydantic v1
 
     for key, value in update_data.items():
         setattr(user_to_update, key, value)

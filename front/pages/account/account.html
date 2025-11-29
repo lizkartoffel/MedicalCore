@@ -24,7 +24,7 @@
         <ul class="nav-links">
             <li><a href="/front/index.html">Home</a></li>
             <li><a href="/front/products/products.html">Products</a></li>
-            <li><a href="../contact/contact.html">Contact</a></li>
+            <li><a href="/front/pages/contact/contact.html">Contact</a></li>
         </ul>
         <div class="search-bar">
             <input type="text" placeholder="Search medical devices..." id="searchInput">
@@ -55,8 +55,8 @@
     <div class="auth-container">
         <!-- Tabs -->
         <div class="auth-tabs">
-            <button class="tab-button active" onclick="AuthForms.showTab('login')">Log In</button>
-            <button class="tab-button" onclick="AuthForms.showTab('signup')">Sign Up</button>
+            <button class="tab-button active" onclick="showTab('login')">Log In</button>
+            <button class="tab-button" onclick="showTab('signup')">Sign Up</button>
         </div>
 
         <!-- Login Form -->
@@ -182,6 +182,27 @@
 </footer>
 
 <!-- Scripts -->
+<script src="/front/assets/js/api services.js"></script>
 <script src="/front/assets/js/main.js"></script>
+<script>
+// Tab switching function
+function showTab(tabName) {
+    const tabs = document.querySelectorAll('.tab-button');
+    const forms = document.querySelectorAll('.auth-form');
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+    forms.forEach(form => form.classList.remove('active'));
+
+    const activeTab = Array.from(tabs).find(tab => 
+        tab.textContent.toLowerCase().includes(tabName)
+    );
+    
+    if (activeTab) activeTab.classList.add('active');
+
+    const activeForm = document.getElementById(`${tabName}-form`);
+    if (activeForm) activeForm.classList.add('active');
+}
+</script>
+<script src="account.js"></script>
 </body>
 </html>

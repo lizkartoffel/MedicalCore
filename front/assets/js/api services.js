@@ -1,5 +1,5 @@
 /* ===================================
-   MEDCORE - API Service
+   MEDCORE - API Service (Fixed)
    Handles all backend API calls
    =================================== */
 
@@ -7,9 +7,9 @@
 
 class ApiService {
     constructor() {
-        // Configure based on environment
-        this.baseURL = window.location.hostname === 'localhost' 
-            ? 'http://localhost:8000'
+        // Use the correct backend URL
+        this.baseURL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://127.0.0.1:8000'
             : 'https://your-production-url.com';
         
         this.token = this.getToken();
@@ -30,7 +30,17 @@ class ApiService {
 
     clearToken() {
         localStorage.removeItem('auth_token');
+        localStorage.removeItem('user_data');
         this.token = null;
+    }
+
+    getUserData() {
+        const userData = localStorage.getItem('user_data');
+        return userData ? JSON.parse(userData) : null;
+    }
+
+    setUserData(userData) {
+        localStorage.setItem('user_data', JSON.stringify(userData));
     }
 
     /* ===================================
@@ -53,10 +63,13 @@ class ApiService {
 
         try {
             const response = await fetch(`${this.baseURL}${endpoint}`, config);
-            const data = await response.json();
+            
+            // Handle empty responses
+            const text = await response.text();
+            const data = text ? JSON.parse(text) : {};
 
             if (!response.ok) {
-                throw new Error(data.detail || 'Request failed');
+                throw new Error(data.detail || `Request failed with status ${response.status}`);
             }
 
             return data;
@@ -75,17 +88,18 @@ class ApiService {
             const response = await this.request('/auth/signup', {
                 method: 'POST',
                 body: JSON.stringify({
-                    username: userData.name.replace(/\s+/g, '_').toLowerCase(),
+                    username: userData.username || userData.name.replace(/\s+/g, '_').toLowerCase(),
                     email: userData.email,
                     password: userData.password,
-                    full_name: userData.name,
+                    full_name: userData.name || userData.full_name,
                     role: userData.role // 'customer' or 'distributor'
                 })
             });
 
-            // Supabase returns session with access_token
-            if (response.session?.access_token) {
-                this.setToken(response.session.access_token);
+            // Store token and user data
+            if (response.access_token) {
+                this.setToken(response.access_token);
+                this.setUserData(response.user);
             }
 
             return response;
@@ -105,9 +119,10 @@ class ApiService {
                 })
             });
 
-            // Supabase returns session with access_token
-            if (response.session?.access_token) {
-                this.setToken(response.session.access_token);
+            // Store token and user data
+            if (response.access_token) {
+                this.setToken(response.access_token);
+                this.setUserData(response.user);
             }
 
             return response;
@@ -138,7 +153,7 @@ class ApiService {
     
     async getProducts(params = {}) {
         const queryString = new URLSearchParams(params).toString();
-        return await this.request(`/products?${queryString}`);
+        return await this.request(`/products${queryString ? '?' + queryString : ''}`);
     }
 
     async getProduct(productId) {
@@ -166,6 +181,21 @@ class ApiService {
     }
 
     /* ===================================
+       USER ENDPOINTS
+       =================================== */
+    
+    async getAllUsers() {
+        return await this.request('/users/');
+    }
+
+    async updateUser(userId, userData) {
+        return await this.request(`/users/${userId}`, {
+            method: 'PUT',
+            body: JSON.stringify(userData)
+        });
+    }
+
+    /* ===================================
        UTILITY METHODS
        =================================== */
     
@@ -185,12 +215,15 @@ class ApiService {
             return false;
         }
     }
+
+    isDistributor() {
+        const userData = this.getUserData();
+        return userData && (userData.role === 'distributor' || userData.roles?.includes('distributor'));
+    }
 }
 
 // Create singleton instance
 const api = new ApiService();
 
-// Export for use in other scripts
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = api;
-}
+// Make it globally available
+window.api = api;
