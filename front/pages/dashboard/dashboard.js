@@ -7,66 +7,57 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // Check authentication
     if (!api.isAuthenticated()) {
+        // Redirect to login/account page if not authenticated
         window.location.href = '/front/pages/account/account.html';
         return;
     }
 
     // Check if user is distributor
-    if (!api.isDistributor()) {
+    // This requires the user data to be in localStorage or a fresh check
+    const isDistributor = api.isDistributor();
+    if (!isDistributor) {
         alert('Access denied. Distributor account required.');
+        // Redirect to the customer dashboard if not a distributor
         window.location.href = '/front/pages/customer/customer.html';
         return;
     }
 
-    // Load dashboard data
+    // Load dashboard data (User Name)
     await loadDashboardData();
     
-    // Initialize charts
+    // Initialize charts with existing mock data
     initializeCharts();
 });
 
 async function loadDashboardData() {
     try {
-        // Get current user
+        // Get current user data (also re-validates token on the backend)
         const user = await api.getCurrentUser();
         
         // Update welcome message
         const welcomeHeader = document.querySelector('.dashboard-header h1');
         if (welcomeHeader && user.full_name) {
+            // Update the header with the user's full name
             welcomeHeader.textContent = `${user.full_name}'s Dashboard`;
         }
 
-        // Get products (if endpoint exists)
-        try {
-            const products = await api.getProducts();
-            updateKPIs(products);
-        } catch (error) {
-            console.log('Products endpoint not yet implemented, using mock data');
-            // Use mock data for now
-        }
-
+        // The KPI cards in the HTML are currently populated with mock data.
+        // The real KPI values (Revenue, Orders, etc.) would typically come
+        // from a dedicated '/dashboard/kpis' endpoint, not '/products'.
+        // For now, we will use the existing mock data and skip the incorrect
+        // calculation based on product inventory.
+        
     } catch (error) {
         console.error('Error loading dashboard data:', error);
-        alert('Error loading dashboard data. Please try refreshing the page.');
+        // If getCurrentUser fails (e.g., token expired), it clears the token
+        // and throws, leading to a user-friendly alert.
+        alert('Error loading user data. You might be logged out. Please log in again.');
+        window.location.href = '/front/pages/account/account.html'; // Redirect on severe failure
     }
 }
 
-function updateKPIs(products) {
-    // Calculate KPIs from products data
-    if (products && products.length > 0) {
-        // Total products
-        const totalProducts = products.length;
-        
-        // Total value
-        const totalValue = products.reduce((sum, p) => sum + (p.price * p.stock_quantity || 0), 0);
-        
-        // Update KPI cards
-        document.querySelector('.card:nth-child(1) .card-value').textContent = 
-            `IQD ${totalValue.toLocaleString()}`;
-        
-        document.querySelector('.card:nth-child(3) .card-value').textContent = totalProducts;
-    }
-}
+// Removed the old 'updateKPIs' function as its logic was incorrect (using products for revenue).
+// The HTML hardcoded values will be used until a proper API endpoint is implemented.
 
 function initializeCharts() {
     // Common chart options

@@ -164,56 +164,56 @@ const Carousel = {
     visibleSlides: 4,
     autoSlideInterval: null,
 
-    products: [
-        {
-            id: 1,
-            name: "Portable Oxygen Cylinder Tank",
-            price: "$210",
-            rating: 4.4,
-            image: "/assets/images/products/oxygen.cylinder.jpg",
-            link: "/pages/products/product-detail4.html"
-        },
-        {
-            id: 2,
-            name: "Blood Pressure Monitor",
-            price: "$55.54",
-            rating: 5.0,
-            image: "/assets/images/products/bloodpressure.jpg",
-            link: "/pages/products/product-detail3.html"
-        },
-        {
-            id: 3,
-            name: "Gun Infrared Thermometer",
-            price: "$49.55",
-            rating: 3.0,
-            image: "/assets/images/products/thermometer.jpg",
-            link: "/pages/products/product-detail2.html"
-        },
-        {
-            id: 4,
-            name: "Professional First Aid Kit",
-            price: "$55.99",
-            rating: 4.8,
-            image: "/assets/images/products/first.aid.jpg",
-            link: "#"
-        },
-        {
-            id: 5,
-            name: "Compact Portable Ultrasound",
-            price: "$450",
-            rating: 4.1,
-            image: "/assets/images/products/ultrasound.png",
-            link: "#"
-        },
-        {
-            id: 6,
-            name: "Box of 50 N95 Respirator Masks",
-            price: "$15",
-            rating: 5.0,
-            image: "/assets/images/products/mask.webp",
-            link: "#"
-        }
-    ],
+products: [
+    {
+        id: 1,
+        name: "Portable Oxygen Cylinder Tank",
+        price: "$210",
+        rating: 4.4,
+        image: "/front/assets/images/oxygen.cylinder.jpg",  // Changed path
+        link: "/front/products/product-detail4.html"
+    },
+    {
+        id: 2,
+        name: "Blood Pressure Monitor",
+        price: "$55.54",
+        rating: 5.0,
+        image: "/front/assets/images/bloodpressure.jpg",  // Changed path
+        link: "/front/products/product-detail3.html"
+    },
+    {
+        id: 3,
+        name: "Gun Infrared Thermometer",
+        price: "$49.55",
+        rating: 3.0,
+        image: "/front/assets/images/thermometer.jpg",  // Changed path
+        link: "/front/products/product-detail2.html"
+    },
+    {
+        id: 4,
+        name: "Professional First Aid Kit",
+        price: "$55.99",
+        rating: 4.8,
+        image: "/front/assets/images/first.aid.jpg",  // Changed path
+        link: "#"
+    },
+    {
+        id: 5,
+        name: "Compact Portable Ultrasound",
+        price: "$450",
+        rating: 4.1,
+        image: "/front/assets/images/ultrasound.png",  // Changed path
+        link: "#"
+    },
+    {
+        id: 6,
+        name: "Box of 50 N95 Respirator Masks",
+        price: "$15",
+        rating: 5.0,
+        image: "/front/assets/images/mask.webp",  // Changed path
+        link: "#"
+    }
+],
 
     init() {
         const container = document.getElementById('carouselTrack');
